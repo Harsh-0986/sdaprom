@@ -4,6 +4,8 @@ import app, { db } from "../firebase";
 import Header from "../components/Header";
 import Details from "../components/Details";
 import Piechart from "../components/PieChart";
+import VoteForm from "../components/VoteForm";
+import Footer from "../components/Footer";
 
 export default function Home() {
 	return (
@@ -23,7 +25,9 @@ export default function Home() {
 			{/* Pie chart */}
 			<Piechart />
 			{/* Vote form */}
+			<VoteForm />
 			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

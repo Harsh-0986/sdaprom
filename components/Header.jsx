@@ -10,7 +10,7 @@ export default function Header() {
 						alt="Logo"
 						width={100}
 						height={100}
-						src="https://instagram.famd1-3.fna.fbcdn.net/v/t51.2885-19/277506683_468154035041520_8297770940930566848_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.famd1-3.fna.fbcdn.net&_nc_cat=100&_nc_ohc=Y5Tj3g8h7NYAX-XvKe3&edm=ABfd0MgBAAAA&ccb=7-4&oh=00_AT_OcOl9TaxW4IToPoBe0c_IOgIlbBnolLAQnRZLxVT2xQ&oe=625A16B7&_nc_sid=7bff83"
+						src="/logo.jpg"
 					/>
 				</a>
 				<nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center  ">
