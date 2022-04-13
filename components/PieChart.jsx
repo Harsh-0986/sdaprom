@@ -1,10 +1,10 @@
 import { PieChart } from "react-minimal-pie-chart";
 
-const Piechart = () => {
+const Piechart = ({ tagline }) => {
 	return (
 		<>
 			<span className="flex flex-col items-center text-white text-3xl font-semibold m-0 p-0 md:mb-12">
-				Prom King
+				{tagline}
 			</span>
 			<div className="bg-gray-900 h-96 md:mb-36 w-full flex flex-col items-center">
 				<div className="flex flex-col items-center w-[75vw] h-[55vh]">

@@ -23,7 +23,8 @@ export default function Home() {
 			<Header />
 			<Details />
 			{/* Pie chart */}
-			<Piechart />
+			<Piechart tagline="Prom King" />
+			<Piechart tagline="Prom Queen" />
 			{/* Vote form */}
 			<VoteForm />
 			{/* Footer */}
