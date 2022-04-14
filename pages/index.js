@@ -8,6 +8,7 @@ import VoteForm from "../components/VoteForm";
 import Footer from "../components/Footer";
 
 export default function Home() {
+	console.log(app);
 	return (
 		<div>
 			<Head>
