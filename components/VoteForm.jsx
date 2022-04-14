@@ -1,6 +1,18 @@
 import { useState } from "react";
+import ListBox from "./ListBox";
 
-const data = [{ name: "Hars1h" }, { name: "Harsh" }];
+const data = [
+	{ name: "Hars1h" },
+	{ name: "Harsh" },
+	{ name: "dfgk" },
+	{ name: "hsdjkgh" },
+	{ name: "kdfjhjg" },
+	{ name: "fdgk" },
+	{ name: "gdf" },
+	{ name: "fdgdfgk" },
+	{ name: "fdgkdfg" },
+	{ name: "fddgfgk" },
+];
 
 const VoteForm = () => {
 	const [openDropdown, setOpenDropdown] = useState(false);
@@ -25,6 +37,10 @@ const VoteForm = () => {
 					>
 						Email address
 					</label>
+				</div>
+				<div className="flex flex-col md:flex-row">
+					<ListBox people={data} tagline="Prom King" />
+					<ListBox people={data} tagline="Prom Queen" />
 				</div>
 			</form>
 		</>
