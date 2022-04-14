@@ -6,9 +6,17 @@ import Details from "../components/Details";
 import Piechart from "../components/PieChart";
 import VoteForm from "../components/VoteForm";
 import Footer from "../components/Footer";
+import Login from "../components/Login";
+import { useSession  } from "next-auth/react";
 
 export default function Home() {
-	console.log(app);
+	const { data: session } = useSession();
+	// console.log(session)
+
+	if (!session) {
+		return <Login />;
+	}
+
 	return (
 		<div>
 			<Head>
@@ -21,7 +29,7 @@ export default function Home() {
 			</Head>
 
 			{/* Header */}
-			<Header />
+			<Header user={session?.user?.name} />
 			<Details />
 			{/* Pie chart */}
 			<Piechart tagline="Prom King" />
