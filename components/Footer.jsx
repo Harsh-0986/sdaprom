@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { SiNextdotjs, SiFirebase, SiTailwindcss } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
 
 const Footer = () => {
 	return (
@@ -18,9 +20,12 @@ const Footer = () => {
 					© 2022 SdaProm
 				</p>
 				<span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-					<a className="ml-3 text-gray-400" href='https://instagram.com/'>
+					<a
+						className="ml-3 text-gray-400"
+						href="https://instagram.com/sdaprom_grad"
+					>
 						<svg
-							fill="none"
+							fill="noe"
 							stroke="currentColor"
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -40,6 +45,18 @@ const Footer = () => {
 						</svg>
 					</a>
 				</span>
+			</div>
+			<div className="flex flex-row justify-center align-center mt-3">
+				<span className="text-gray-400 text-sm">Made using </span>
+				<SiNextdotjs className="mt-1 ml-2" />
+				<FaReact className="mt-1 ml-2" />
+				<SiFirebase className="mt-1 ml-2" />
+				<SiTailwindcss className="mt-1 ml-2" />
+			</div>
+
+			<div className="flex flex-row text-sm justify-center align-center mt-3 ">
+				Made by &nbsp;
+				<a href="https://harsh-shah.tk"> Harsh Shah</a>
 			</div>
 		</footer>
 	);

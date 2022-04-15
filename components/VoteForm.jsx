@@ -10,7 +10,7 @@ const VoteForm = ({  kings, queens }) => {
 	const [email, setEmail] = useState(session.user.email);
 	const kingVote = localStorage.getItem("prom_king").toString();
 	const queenVote = localStorage.getItem("prom_queen").toString();
-	const [voted, setVoted] = useState(localStorage.getItem('voted') || false)
+	const [voted, setVoted] = useState(localStorage.getItem('voted')?.toString())
 
 	let obj = {}
 
@@ -35,7 +35,7 @@ const VoteForm = ({  kings, queens }) => {
 		addDoc(collection(db, 'voters'), obj).then(()=>{
 			toast.success('Thank you for voting')
 			setVoted(true)
-			localStorage.setItem('voted', voted)
+			localStorage.setItem('voted', true)
 		}).catch(e => toast.error('An error occured.Try again later'))
 		obj = {}
 	};
