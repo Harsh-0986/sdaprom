@@ -1,9 +1,16 @@
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/solid";
 
 const ListBox = ({ people, tagline }) => {
 	const [selectedPerson, setSelectedPerson] = useState(people[0]);
+	useEffect(() => {
+		if (tagline === "Prom King") {
+			localStorage.setItem("prom_king", selectedPerson);
+		} else {
+			localStorage.setItem("prom_queen", selectedPerson);
+		}
+	}, [selectedPerson]);
 
 	return (
 		<div className="m-12 my-2  w-2/3 md:w-1/3 ">
@@ -12,9 +19,9 @@ const ListBox = ({ people, tagline }) => {
 			</span>
 			<Listbox value={selectedPerson} onChange={setSelectedPerson}>
 				<Listbox.Button className="flex flex-row justify-between align-center text-white font-semibold text-lg w-full bg-blue-500 rounded px-5 py-2 ">
-					{selectedPerson.name}
+					{selectedPerson}
 					<svg
-						xmln="http://www.w3.org/2000/svg"
+						xmlns="http://www.w3.org/2000/svg"
 						className="h-5 w-5 mt-1"
 						viewBox="0 0 20 20"
 						fill="currentColor"
@@ -31,7 +38,7 @@ const ListBox = ({ people, tagline }) => {
 						/* Use the `active` state to conditionally style the active option. */
 						/* Use the `selected` state to conditionally style the selected option. */
 						<Listbox.Option
-							key={person.name}
+							key={person}
 							value={person}
 							as={Fragment}
 						>
@@ -46,7 +53,7 @@ const ListBox = ({ people, tagline }) => {
 									{selected && (
 										<CheckIcon className="h-4 mt-1" />
 									)}
-									{person.name}
+									{person}
 								</li>
 							)}
 						</Listbox.Option>
