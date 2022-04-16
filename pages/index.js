@@ -10,6 +10,7 @@ import Login from "../components/Login";
 import { useSession } from "next-auth/react";
 import { setDoc, doc, getDocs, collection } from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react/cjs/react.development";
 
 export default function Home() {
 	const { data: session } = useSession();
@@ -81,8 +82,10 @@ export default function Home() {
 	let voters = [];
 	let i = 0;
 
-	localStorage.setItem("prom_king", kings[0]);
-	localStorage.setItem("prom_queen", queens[0]);
+	useEffect(() => {
+		localStorage.setItem("prom_king", kings[0]);
+		localStorage.setItem("prom_queen", queens[0]);
+	}, []);
 
 	const fetchVotes = async () => {
 		const querySnapshot = await getDocs(collection(db, "voters"));
