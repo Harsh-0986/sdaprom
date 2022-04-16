@@ -16,9 +16,7 @@ const VoteForm = ({ kings, queens }) => {
 	const [email, setEmail] = useState(session.user.email);
 	const kingVote = localStorage.getItem("prom_king").toString();
 	const queenVote = localStorage.getItem("prom_queen").toString();
-	const [voted, setVoted] = useState(
-		localStorage.getItem("voted")?.toString() || false
-	);
+	const [voted, setVoted] = useState(localStorage.getItem("voted") || false);
 
 	let obj = {};
 
