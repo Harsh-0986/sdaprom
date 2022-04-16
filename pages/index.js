@@ -81,6 +81,9 @@ export default function Home() {
 	let voters = [];
 	let i = 0;
 
+	localStorage.setItem("prom_king", kings[0]);
+	localStorage.setItem("prom_queen", queens[0]);
+
 	const fetchVotes = async () => {
 		const querySnapshot = await getDocs(collection(db, "voters"));
 		querySnapshot.forEach((doc) => {
