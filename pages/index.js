@@ -47,10 +47,10 @@ export default function Home() {
 		"Parth balchandani",
 		"Dev desai ",
 	];
-	kings.map(async (king) => {
-		const ref = doc(db, "kings", king);
-		setDoc(ref, {});
-	});
+	//	kings.map(async (king) => {
+	//		const ref = doc(db, "kings", king);
+	//		setDoc(ref, {});
+	//	});
 
 	const queens = [
 		"Vanshita savani",
@@ -73,10 +73,10 @@ export default function Home() {
 		"Aashi",
 		"Sakshi katargamwala",
 	];
-	queens.map(async (queen) => {
-		const ref = doc(db, "queens", queen);
-		setDoc(ref, {});
-	});
+	//	queens.map(async (queen) => {
+	//		const ref = doc(db, "queens", queen);
+	//		setDoc(ref, {});
+	//	});
 
 	let voters = [];
 	let i = 0;
