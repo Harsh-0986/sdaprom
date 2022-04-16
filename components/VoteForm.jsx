@@ -1,46 +1,63 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ListBox from "./ListBox";
 import { useSession } from "next-auth/react";
-import {collection, addDoc, doc, updateDoc, getDocs} from "firebase/firestore";
+import {
+	collection,
+	addDoc,
+	doc,
+	updateDoc,
+	getDocs,
+} from "firebase/firestore";
 import { db } from "../firebase";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
-const VoteForm = ({  kings, queens }) => {
+const VoteForm = ({ kings, queens }) => {
 	const { data: session } = useSession();
 	const [email, setEmail] = useState(session.user.email);
 	const kingVote = localStorage.getItem("prom_king").toString();
 	const queenVote = localStorage.getItem("prom_queen").toString();
-	const [voted, setVoted] = useState(localStorage.getItem('voted')?.toString())
+	const [voted, setVoted] = useState(
+		localStorage.getItem("voted")?.toString() || false
+	);
 
-	let obj = {}
+	let obj = {};
 
 	const king = kings;
 	const queen = queens;
 
-
 	const setVote = async (e) => {
 		e.preventDefault();
-		obj[`${email}`] = null
-		console.log(obj)
-		updateDoc(doc(db, "kings", `${kingVote}`), obj).then(
-			() => {toast.success("Vote success")}
-		).catch(e => {toast.error('An error occurred.Try again after sometime.')});
+		obj[`${email}`] = null;
+		console.log(obj);
+		updateDoc(doc(db, "kings", `${kingVote}`), obj)
+			.then(() => {
+				toast.success("Vote success");
+			})
+			.catch((e) => {
+				toast.error("An error occurred.Try again after sometime.");
+			});
 
-		updateDoc(doc(db, "queens", `${queenVote}`), obj).then(
-			() => {toast.success("Vote success")}
-		).catch(e => {toast.error('An error occurred.Try again after sometime.')});
-		obj = {}
+		updateDoc(doc(db, "queens", `${queenVote}`), obj)
+			.then(() => {
+				toast.success("Vote success");
+			})
+			.catch((e) => {
+				toast.error("An error occurred.Try again after sometime.");
+			});
+		obj = {};
 
-		obj[email] = true
-		addDoc(collection(db, 'voters'), obj).then(()=>{
-			toast.success('Thank you for voting')
-			setVoted(true)
-			localStorage.setItem('voted', true)
-		}).catch(e => toast.error('An error occured.Try again later'))
-		obj = {}
+		obj[email] = true;
+		addDoc(collection(db, "voters"), obj)
+			.then(() => {
+				toast.success("Thank you for voting");
+				setVoted(true);
+				localStorage.setItem("voted", true);
+			})
+			.catch((e) => toast.error("An error occured.Try again later"));
+		obj = {};
 	};
 
-	let voters = []
+	let voters = [];
 
 	return (
 		<>
@@ -65,22 +82,30 @@ const VoteForm = ({  kings, queens }) => {
 						Email address
 					</label>
 				</div>
-				{!voted && (<div className="flex flex-col md:flex-row">
-					<ListBox people={king} tagline="Prom King" />
-					<div className="w-[0.1rem]" />
-					<ListBox people={queen} tagline="Prom Queen" />
-				</div>)}
-				{!voted && (<div className="w-full flex flex-row justify-center align-center">
-					<button
-						className="w-1/2 px-5 py-3 my-2 bg-blue-500 hover:bg-blue-700 m-12 text-white font-semibold text-lg rounded-sm"
-						onClick={async (e) => {
-							await setVote(e);
-						}}
-					>
-						Submit
-					</button>
-				</div>)}
-				{voted && <span className='mx-12 md:mx-0 text-4xl text-white font-semibold flex flex-row justify-center align-center'>You can vote only once!</span> }
+				{!voted && (
+					<div className="flex flex-col md:flex-row">
+						<ListBox people={king} tagline="Prom King" />
+						<div className="w-[0.1rem]" />
+						<ListBox people={queen} tagline="Prom Queen" />
+					</div>
+				)}
+				{!voted && (
+					<div className="w-full flex flex-row justify-center align-center">
+						<button
+							className="w-1/2 px-5 py-3 my-2 bg-blue-500 hover:bg-blue-700 m-12 text-white font-semibold text-lg rounded-sm"
+							onClick={async (e) => {
+								await setVote(e);
+							}}
+						>
+							Submit
+						</button>
+					</div>
+				)}
+				{voted && (
+					<span className="mx-12 md:mx-0 text-4xl text-white font-semibold flex flex-row justify-center align-center">
+						You can vote only once!
+					</span>
+				)}
 			</form>
 		</>
 	);
