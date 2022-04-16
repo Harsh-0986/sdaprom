@@ -10,7 +10,7 @@ import Login from "../components/Login";
 import { useSession } from "next-auth/react";
 import { setDoc, doc, getDocs, collection } from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 export default function Home() {
 	const { data: session } = useSession();
